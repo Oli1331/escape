@@ -82,7 +82,7 @@ void Draw(int(&P)[90][160])
 
 }
 
-void read_map_for_creating(vector<int[90][160]>&P)
+void read_map_for_creating(vector<int[90][160]>&P,int quaniti_floor)
 {
 	string line;
 	int k = 0;
@@ -93,7 +93,7 @@ void read_map_for_creating(vector<int[90][160]>&P)
 		while (getline(in, line))
 		{
 			for (char x : line) {
-				P[(k / 14400)%4][(k / 160) % 90][k % 160] = int(x-'0'); k++;
+				P[(k / 14400)%quaniti_floor][(k / 160) % 90][k % 160] = int(x-'0'); k++;
 				//cout <<int(x-'0') << ' ' << x << endl;
 			}
 		}
@@ -110,7 +110,7 @@ void creating_a_map() {
 	
 	cout << "LKM-wall;\nPKM-delete;\nWHEEL-exit;\nPKM+LKM-people;\nUP-next floor;\n2X WHEEL-stairs\n\nhow many floors?";
 	cin >> quantity_floor;
-	vector<int[90][160]>P(quantity_floor); read_map_for_creating(P);
+	vector<int[90][160]>P(quantity_floor); read_map_for_creating(P,quantity_floor);
 	//system("cls"); 
 
 	txSetFillColour(RGB(240, 240, 240));
